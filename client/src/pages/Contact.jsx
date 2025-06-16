@@ -235,8 +235,8 @@ const handleSelectChange = (e) => {
                   <div>
                     <h3 className="font-medium text-lg mb-1">Email Us</h3>
                     <p className="text-muted-foreground">
-                      <a href="mailto:amit@elitewooduae.com" className="hover:text-primary">
-                        amit@elitewooduae.com
+                      <a href="mailto:dummy@elitewooduae.com" className="hover:text-primary">
+                        dummy@elitewooduae.com
                       </a>
                     </p>
                   </div>
