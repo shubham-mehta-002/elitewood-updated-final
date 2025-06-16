@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/common/Card";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import {
   CardHeader,CardTitle ,CardDescription
-} from "@/components/common/card";  
+} from "@/components/common/Card";  
 import axios from "../../utils/axiosInstance"
 import {ServiceFormDialog}  from "./ServiceFormDialog"
 import { Button } from '@/components/common/Button';
