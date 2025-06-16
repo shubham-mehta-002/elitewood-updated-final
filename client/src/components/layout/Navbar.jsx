@@ -45,9 +45,9 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-2xl font-serif font-medium flex items-center"
           >
-            {/* <span className="text-primary">Dubai</span>
-            <span className="text-foreground ml-1">Design Oasis</span> */}
-            <img src={logo} alt="logo" className="h-[50px] w-[100px]"/>
+            <span className="text-primary">Dubai</span>
+            <span className="text-foreground ml-1">Design Oasis</span> 
+{/*             <img src={logo} alt="logo" className="h-[50px] w-[100px]"/> */}
           </Link>
 
           {/* Desktop Navigation */}
