@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-serif mb-4">Elitewood</h3>
+            <h3 className="text-xl font-serif mb-4">Dubai Design Oasis</h3>
             <p className="text-sm text-gray-300 mb-6">
               Creating inspiring spaces that reflect your unique style and needs.
               Transforming interiors across Dubai.
@@ -54,7 +54,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="mailto:amit@elitewooduae.com"
+                href="mailto:amit@Dubai Design Oasisuae.com"
                 className="text-white hover:text-gold-light transition-colors"
                 aria-label="Email"
               >
@@ -144,10 +144,10 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0" />
                 <a
-                  href="mailto:dummy@elitewooduae.com"
+                  href="mailto:dummy@Dubai Design Oasisuae.com"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  dummy@elitewooduae.com
+                  dummy@Dubai Design Oasisuae.com
                 </a>
               </li>
             </ul>
@@ -155,7 +155,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Elitewood rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Dubai Design Oasis rights reserved.</p>
         </div>
       </div>
     </footer>
