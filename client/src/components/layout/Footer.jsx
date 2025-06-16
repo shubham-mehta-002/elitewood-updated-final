@@ -144,10 +144,10 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0" />
                 <a
-                  href="mailto:amit@elitewooduae.com"
+                  href="mailto:dummy@elitewooduae.com"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  amit@elitewooduae.com
+                  dummy@elitewooduae.com
                 </a>
               </li>
             </ul>
