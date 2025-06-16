@@ -77,7 +77,7 @@ const HomePage = () => {
             Interior Design to suit your lifestyle & Budget
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-8 animate-fade-up text-left" style={{ animationDelay: "0.2s" }}>
-            At Elitewood, we redefine the essence of home interiors with a perfect blend of sophistication and innovation. 
+            At Dubai Design Oasis, we redefine the essence of home interiors with a perfect blend of sophistication and innovation. 
             Our commitment lies in crafting bespoke designs that not only meet but exceed your expectations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: "0.4s" }}>
@@ -97,9 +97,9 @@ const HomePage = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center text-left">
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif mb-6">About Elitewood</h2>
+              <h2 className="text-3xl md:text-4xl font-serif mb-6">About Dubai Design Oasis</h2>
               <p className="text-muted-foreground mb-6">
-              At Elitewood, we specialize in transforming houses into homes. Our extensive range of products includes: Modular Kitchen, Wardrobe, Bathroom Vanity & LCD Panel Design. 
+              At Dubai Design Oasis, we specialize in transforming houses into homes. Our extensive range of products includes: Modular Kitchen, Wardrobe, Bathroom Vanity & LCD Panel Design. 
               Step into a world where each detail is a brushstroke of elegance, turning your living spaces into a canvas of luxury.
               </p>
               <p className="text-muted-foreground mb-8">
