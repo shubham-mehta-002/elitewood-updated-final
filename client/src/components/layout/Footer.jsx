@@ -54,7 +54,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="mailto:dummy@dubadesignoasis.com"
+                href="mailto:dummy@dubaidesignoasis.com"
                 className="text-white hover:text-gold-light transition-colors"
                 aria-label="Email"
               >
@@ -147,7 +147,7 @@ const Footer = () => {
                   href="mailto:dummy@dubadesignoasis.com"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  dummy@Dubai Design Oasisuae.com
+                  dummy@dubaidesignoasis.com
                 </a>
               </li>
             </ul>
