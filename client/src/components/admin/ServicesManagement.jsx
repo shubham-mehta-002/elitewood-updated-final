@@ -1,6 +1,6 @@
 
 import React , {useState} from 'react';
-import { Card, CardContent } from "@/components/common/card";
+import { Card, CardContent } from "@/components/common/Card";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import {
   CardHeader,CardTitle ,CardDescription
