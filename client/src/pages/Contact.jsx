@@ -224,7 +224,7 @@ const handleSelectChange = (e) => {
                   <div>
                     <h3 className="font-medium text-lg mb-1">Visit Us</h3>
                     <p className="text-muted-foreground">
-                    SABHA BUILD, Plot No. 1414-0 Jabal Ali Industrial First Dubai, <br/>
+                    Jabal Ali Industrial First Dubai, <br/>
                     Dubai, 261141 United Arab Emirates
                     </p>
                   </div>
