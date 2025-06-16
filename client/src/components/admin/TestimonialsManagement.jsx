@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/common/Card";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import {
   CardHeader,CardTitle ,CardDescription
-} from "@/components/common/card";  
+} from "@/components/common/Card";  
 import { TestimonialFormDialog } from "./TestimonialFormDialog";
 import axios from "../../utils/axiosInstance";
 import toast from "react-hot-toast"
