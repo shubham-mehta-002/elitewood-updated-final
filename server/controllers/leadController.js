@@ -1,11 +1,10 @@
 const { Lead } = require('../models/Lead');
-const {Service} = require("../models/Service")
+const { Service } = require("../models/Service")
 
 
 const createLead = async (req, res, next) => {
   try {
     const { name, email, phone, message, serviceType } = req.body;
-console.log({ name, email, phone, message, serviceType })
     const service = await Service.findById(serviceType);
 
     if (!service) {
@@ -23,14 +22,13 @@ console.log({ name, email, phone, message, serviceType })
   }
 };
 
-const getAllLeads = async (req, res,next) => {
+const getAllLeads = async (req, res, next) => {
   try {
     const leads = await Lead.find().populate({
       path: "serviceType",
       select: "title description"  // specify which fields you want
     })
-    .sort({ date: -1 });
-    console.log({leads})
+      .sort({ date: -1 });
     res.json(leads);
   } catch (error) {
     console.error('Get Leads Error:', error);
@@ -38,7 +36,7 @@ const getAllLeads = async (req, res,next) => {
   }
 };
 
-const deleteLead = async (req, res,next) => {
+const deleteLead = async (req, res, next) => {
   try {
     const lead = await Lead.findByIdAndDelete(req.params.id);
     if (!lead) return res.status(404).json({ message: 'Lead not found' });
@@ -49,26 +47,29 @@ const deleteLead = async (req, res,next) => {
   }
 };
 
-const updateLead = async(req,res,next) =>{
-  try{
-    // const { name, email, phone, message, serviceType } = req.body;
-    // const lead = await Lead.findByIdAndUpdate(req.params.id, { name, email, phone, message, serviceType });
-    const updateFields = req.body; 
+const updateLead = async (req, res, next) => {
+  try {
+    const { status } = req.body;
+
+    if (!status) {
+      return res.status(400).json({ message: 'Status is required for update' });
+    }
+
     const lead = await Lead.findByIdAndUpdate(
       req.params.id,
-      updateFields,
-      { new: true } // optional: returns the updated doc
+      { status },
+      { new: true, runValidators: true }
     );
     if (!lead) throw new Error('Lead not found with id: ' + req.params.id);
-    res.json({ message: 'Lead updated successfully' });
+    res.json({ message: 'Lead updated successfully', lead });
   } catch (error) {
     console.error('Update Lead Error:', error);
     next(error)
   }
 }
-module.exports ={
+module.exports = {
   createLead,
-  deleteLead, 
+  deleteLead,
   getAllLeads,
   updateLead
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import {Input} from "@/components/common/Input"
-import {Label} from     "@/components/common/Label"
-import {Textarea} from "@/components/common/Textarea"
+import { Input } from "@/components/common/Input"
+import { Label } from "@/components/common/Label"
+import { Textarea } from "@/components/common/Textarea"
 import AnimatedSection from "@/components/AnimatedSection";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 import { Button } from "@/components/common/Button";
 import axios from "../utils/axiosInstance";
 
@@ -20,7 +20,7 @@ const ContactPage = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [services, setServices]= useState([]);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,13 +41,13 @@ const ContactPage = () => {
   //   }));
   // };
 
-const handleSelectChange = (e) => {
-  const value = e.target.value;
-  setFormData((prev) => ({
-    ...prev,
-    serviceType: value,
-  }));
-};
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    setFormData((prev) => ({
+      ...prev,
+      serviceType: value,
+    }));
+  };
 
 
 
@@ -56,7 +56,7 @@ const handleSelectChange = (e) => {
     setIsSubmitting(true);
 
     try {
-      console.log({formData})
+      console.log({ formData })
       const response = await axios.post('/api/leads', formData);
 
       if (!response.data) {
@@ -73,19 +73,19 @@ const handleSelectChange = (e) => {
         message: "",
       });
     } catch (error) {
-    console.log({error})
-    //   toast({
-    //     title: "Error",
-    //     description: error.response?.data?.errors?.map(error => error.message).join(', ')||"Failed to submit inquiry. Please try again.",
-    //     variant: "destructive",
-    //   });
-      toast.error(error.response?.data?.errors?.map(error => error.message).join(', ')||"Failed to submit inquiry. Please try again.")
+      console.log({ error })
+      //   toast({
+      //     title: "Error",
+      //     description: error.response?.data?.errors?.map(error => error.message).join(', ')||"Failed to submit inquiry. Please try again.",
+      //     variant: "destructive",
+      //   });
+      toast.error(error.response?.data?.errors?.map(error => error.message).join(', ') || "Failed to submit inquiry. Please try again.")
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const fetchServices = async() =>{
+  const fetchServices = async () => {
     try {
       const response = await axios.get('/api/services');
       setServices(response.data);
@@ -93,9 +93,9 @@ const handleSelectChange = (e) => {
       console.error('Error fetching services:', error);
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     fetchServices();
-  },[])
+  }, [])
 
   return (
     <>
@@ -120,10 +120,10 @@ const handleSelectChange = (e) => {
             <div>
               <h2 className="text-3xl font-serif mb-6">Get in Touch</h2>
               <p className="text-muted-foreground mb-8">
-                Fill out the form below, and one of our design consultants will contact you 
+                Fill out the form below, and one of our design consultants will contact you
                 to discuss your project needs and schedule a consultation.
               </p>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -150,7 +150,7 @@ const handleSelectChange = (e) => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
@@ -166,27 +166,27 @@ const handleSelectChange = (e) => {
                   <div className="space-y-2">
                     <Label htmlFor="serviceType">Service Interest</Label>
                     <select
-                        value={formData.serviceType || ""}
-                        onChange={handleSelectChange}
-                        name="serviceType"
-                        required 
-                        className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm text-gray-800"
-                        >
-                        <option value="" disabled required>
-                            Select a service
-                        </option>
-                        {services && services.length > 0 &&
-                            services.map((service) => (
-                            <option key={service._id}  className="text-gray-800 bg-white" value={service._id}>
-                                {service.title}
-                            </option>
-                            ))
-                        }
+                      value={formData.serviceType || ""}
+                      onChange={handleSelectChange}
+                      name="serviceType"
+                      required
+                      className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm text-gray-800"
+                    >
+                      <option value="" disabled required>
+                        Select a service
+                      </option>
+                      {services && services.length > 0 &&
+                        services.map((service) => (
+                          <option key={service._id} className="text-gray-800 bg-white" value={service._id}>
+                            {service.title}
+                          </option>
+                        ))
+                      }
                     </select>
 
                   </div>
                 </div>
-                
+
                 <div className="md:col-span-2 space-y-2 ">
                   <Label htmlFor="message">Message</Label>
                   <Textarea
@@ -200,7 +200,7 @@ const handleSelectChange = (e) => {
                     required
                   />
                 </div>
-                
+
                 <Button
                   type="submit"
                   className="w-full"
@@ -210,38 +210,38 @@ const handleSelectChange = (e) => {
                 </Button>
               </form>
             </div>
-            
+
             {/* Contact Information */}
             <div className="lg:pl-12">
               <h2 className="text-3xl font-serif mb-6">Contact Information</h2>
               <p className="text-muted-foreground mb-8">
                 Visit our design studio or reach out through any of the following channels:
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-medium text-lg mb-1">Visit Us</h3>
                     <p className="text-muted-foreground">
-                    Jabal Ali Industrial First Dubai, <br/>
-                    Dubai, 261141 United Arab Emirates
+                      Jabal Ali Industrial First Dubai, <br />
+                      Dubai, 261141 United Arab Emirates
                     </p>
                   </div>
                 </div>
-                           
+
                 <div className="flex items-start">
                   <Mail className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-medium text-lg mb-1">Email Us</h3>
                     <p className="text-muted-foreground">
-                      <a href="mailto:dummy@elitewooduae.com" className="hover:text-primary">
-                        dummy@elitewooduae.com
+                      <a href="mailto:dummy@dubaidesignoasis.com" className="hover:text-primary">
+                        dummy@dubaidesignoasis.com
                       </a>
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <Clock className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
@@ -254,7 +254,7 @@ const handleSelectChange = (e) => {
                   </div>
                 </div>
               </div>
-       
+
             </div>
           </div>
         </div>

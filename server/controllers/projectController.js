@@ -1,12 +1,12 @@
 const { Project } = require('../models/Project');
 
-const createProject = async (req, res,next) => {
+const createProject = async (req, res, next) => {
   try {
     const { title, description, category, images, status } = req.body;
-    console.log({ title, description, category, images , status})
+    console.log({ title, description, category, images, status })
     const newProject = new Project({ title, description, category, images, status });
     await newProject.save();
-    res.status(201).json({ message: 'Project created successfully', project : newProject });
+    res.status(201).json({ message: 'Project created successfully', project: newProject });
   } catch (error) {
     console.error('Create Project Error:', error);
     next(error)
@@ -15,12 +15,16 @@ const createProject = async (req, res,next) => {
 
 const getAllProjects = async (req, res, next) => {
   try {
-    const { status : statusArray } = req.query; // Get status from query params
+    const { status: statusArray } = req.query; // Get status from query params
 
     let query = {};
 
-    if (statusArray && statusArray.length > 0) {
-      query.status = { $in: statusArray };    
+    if (statusArray) {
+      if (Array.isArray(statusArray)) {
+        query.status = { $in: statusArray };
+      } else {
+        query.status = statusArray;
+      }
     }
 
     const projects = await Project.find(query);
@@ -91,9 +95,9 @@ const deleteProject = async (req, res, next) => {
 
 
 module.exports = {
-    createProject,
-    getAllProjects,
-    updateProject,
-    deleteProject,
-    getProjectById
+  createProject,
+  getAllProjects,
+  updateProject,
+  deleteProject,
+  getProjectById
 }

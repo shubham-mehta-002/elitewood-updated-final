@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const { initializeAdmin } = require('./utils/initializeAdmin');
-const errorHandler = require('./middlewares/errorMiddleware'); 
+const errorHandler = require('./middlewares/errorMiddleware');
 
 // Load env
 dotenv.config();
@@ -15,7 +15,10 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:8080',
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

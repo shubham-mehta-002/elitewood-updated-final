@@ -52,6 +52,7 @@ export const ProjectsManagement = ({
       title: project.title || '',
       category: project.category || '',
       description: project.description || '',
+      images: project.images || [], // Store existing URLs
       imageFiles: [],
       status: project.status || 'active'
     });
@@ -93,12 +94,13 @@ export const ProjectsManagement = ({
         category: formData.category,
         description: formData.description,
         status: formData.status,
-        images: uploadedImageUrls.length > 0 ? uploadedImageUrls : currentProject?.images || []
+        // Merge remaining existing images with newly uploaded ones
+        images: [...(formData.images || []), ...uploadedImageUrls]
       };
 
       if (!currentProject) {
         // Create new project
-        console.log({projectDataToSubmit})
+        console.log({ projectDataToSubmit })
         response = await axios.post('/api/projects', projectDataToSubmit);
         projectData = response.data.project;
         // toast({
@@ -109,7 +111,7 @@ export const ProjectsManagement = ({
         setProjects([...projects, projectData]);
       } else {
         // Update existing project
-        console.log({projectDataToSubmit})
+        console.log({ projectDataToSubmit })
         response = await axios.put(`/api/projects/${currentProject._id}`, projectDataToSubmit);
         projectData = response.data.project;
         // toast({
@@ -163,12 +165,12 @@ export const ProjectsManagement = ({
       ) : (
         <Card>
           <CardHeader className="flex flex-row justify-between">
-           <div className='w-1/2'>
-            
+            <div className='w-1/2'>
+
               <CardTitle className="text-2xl font-serif">Manage Projects</CardTitle>
               <CardDescription className="">Add, edit or remove projects displayed on the website</CardDescription>
-           </div>
-            
+            </div>
+
             <Button onClick={openAddDialog} className="w-fit">
               <Plus className="h-4 w-4 mr-0" /> Add New Project
             </Button>
@@ -192,13 +194,23 @@ export const ProjectsManagement = ({
                         <td className="py-3 px-4 font-medium">{project.title}</td>
                         <td className="py-3 px-4">{project.category}</td>
                         <td className="py-3 px-4">
-                          <div className="h-10 w-16 bg-gray-200 rounded overflow-hidden">
+                          <div className="h-10 w-16 rounded overflow-hidden">
                             {project.images && project.images.length > 0 ? (
-                              <img
-                                src={project.images[0]}
-                                alt={project.title}
-                                className="h-12 w-12 object-cover"
-                              />
+                              <div className="flex -space-x-2">
+                                {project.images.slice(0, 3).map((img, i) => (
+                                  <img
+                                    key={i}
+                                    src={img}
+                                    alt={`${project.title} preview ${i}`}
+                                    className="h-10 w-10 rounded-full border-2 border-white object-cover"
+                                  />
+                                ))}
+                                {project.images.length > 3 && (
+                                  <div className="h-10 w-10 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold">
+                                    +{project.images.length - 3}
+                                  </div>
+                                )}
+                              </div>
                             ) : (
                               <span className="text-xs text-gray-500">No Image</span>
                             )}
@@ -212,7 +224,7 @@ export const ProjectsManagement = ({
                             <Button
                               variant="secondary"
                               size="sm"
-                              
+
                               onClick={() => openEditDialog(project)}
                             >
                               <Edit className={`h-4 w-4 text-primary`} />
@@ -220,9 +232,10 @@ export const ProjectsManagement = ({
                             <Button
                               variant="secondary"
                               size="sm"
+                              className="text-red-500 hover:text-red-700 hover:bg-red-50"
                               onClick={() => handleDelete(project._id)}
                             >
-                              <Trash2 className="h-4 w-4 text-primary" />
+                              <Trash2 className="h-4 w-4" />
                             </Button>
                           </div>
                         </td>
